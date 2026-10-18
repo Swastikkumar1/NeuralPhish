@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralPhish - Advanced URL Security Scanner</title>
+    <title>NeuralPhish - Phishing & Messenger URL Security Shield</title>
     <style>
         * {
             margin: 0;
@@ -49,8 +49,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.12) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
             animation: gradientShift 15s ease infinite;
@@ -59,13 +59,13 @@
         @keyframes gradientShift {
             0%, 100% {
                 background: 
-                    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 50%);
+                    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.12) 0%, transparent 50%);
             }
             50% {
                 background: 
-                    radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 20% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 50%);
+                    radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(157, 78, 221, 0.12) 0%, transparent 50%);
             }
         }
 
@@ -77,7 +77,7 @@
         /* Header */
         header {
             border-bottom: 1px solid var(--border);
-            background-color: rgba(10, 14, 39, 0.85);
+            background-color: rgba(10, 14, 39, 0.88);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -88,7 +88,7 @@
         nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -102,12 +102,16 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         nav ul {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         nav a {
@@ -117,6 +121,10 @@
             font-size: 0.95rem;
             font-weight: 500;
             position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
         }
 
         nav a::after {
@@ -130,47 +138,69 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--primary);
-        }
-
         nav a:hover::after {
             width: 100%;
         }
 
-        /* Hero Section */
+        .nav-pill {
+            background: rgba(0, 212, 255, 0.12);
+            border: 1px solid var(--primary);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            color: var(--primary) !important;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Hero */
         .hero {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem 3rem;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            animation: slideUp 0.8s ease;
+            font-size: 3.5rem;
             font-weight: 800;
             letter-spacing: -1.5px;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .hero p {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
+            max-width: 850px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: slideUp 0.8s ease 0.1s backwards;
-            line-height: 1.6;
+        }
+
+        .hero-badge-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
         }
 
         .hero-cta {
@@ -178,29 +208,27 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideUp 0.8s ease 0.2s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--bg-dark);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 12px 32px rgba(0, 212, 255, 0.35);
         }
 
@@ -208,231 +236,471 @@
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
+            padding: 0.9rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-secondary:hover {
             background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            transform: translateY(-2px);
         }
 
         /* Trust Banner */
         .trust-banner {
             max-width: 1400px;
-            margin: 3rem auto;
-            padding: 1.5rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
+            margin: 2.5rem auto 4rem;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(157, 78, 221, 0.08) 100%);
             border: 1px solid var(--border);
             border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
-            animation: slideUp 0.8s ease 0.3s backwards;
         }
 
         .trust-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             font-size: 0.95rem;
+            color: var(--text-primary);
         }
 
         .trust-item span {
-            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: bold;
         }
 
-        /* Scanner Section */
+        /* Scanner Section & Tabs */
         .scanner {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 5rem;
+            padding: 0 1.5rem;
         }
 
         .scanner-card {
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
             border: 2px solid var(--border);
             border-radius: 1.5rem;
-            padding: 3rem;
-            animation: slideUp 0.8s ease 0.2s backwards;
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.08);
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.08);
+            transition: border-color 0.3s ease;
         }
 
         .scanner-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 16px 48px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.4);
         }
 
-        .scanner-title {
+        .tabs-header {
             display: flex;
-            align-items: center;
             gap: 0.75rem;
             margin-bottom: 2rem;
-            font-size: 1.5rem;
-            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
-        .input-group {
+        .tab-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.8rem 1.6rem;
+            border-radius: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        input[type="text"] {
-            flex: 1;
+        .tab-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #0a0e27;
+            font-weight: 700;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.3);
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Message Input & Sample Chips */
+        .field-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        textarea.message-input {
+            width: 100%;
+            min-height: 140px;
+            padding: 1.25rem;
+            background-color: var(--bg-tertiary);
+            border: 2px solid var(--border);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        textarea.message-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.15);
+        }
+
+        input.url-input {
+            width: 100%;
             padding: 1.25rem;
             background-color: var(--bg-tertiary);
             border: 2px solid var(--border);
             border-radius: 0.75rem;
             color: var(--text-primary);
             font-size: 1rem;
-            transition: all 0.3s ease;
             font-family: 'Courier New', monospace;
-        }
-
-        input[type="text"]:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
-            background-color: rgba(26, 31, 58, 0.8);
-        }
-
-        input[type="text"]::placeholder {
-            color: var(--text-secondary);
-        }
-
-        button {
-            padding: 1.25rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
         }
 
-        button:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 36px rgba(0, 212, 255, 0.35);
+        input.url-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.15);
         }
 
-        button:active:not(:disabled) {
-            transform: translateY(-1px);
+        .sample-chips-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
 
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .result {
-            margin-top: 2rem;
-            padding: 2rem;
-            border-radius: 1rem;
-            display: none;
-            animation: slideUp 0.4s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .result.show {
-            display: block;
-        }
-
-        .result.safe {
-            background-color: rgba(16, 185, 129, 0.08);
-            border: 2px solid var(--success);
-            border-left-color: var(--success);
-        }
-
-        .result.warning {
-            background-color: rgba(245, 158, 11, 0.08);
-            border: 2px solid var(--warning);
-            border-left-color: var(--warning);
-        }
-
-        .result.danger {
-            background-color: rgba(239, 68, 68, 0.08);
-            border: 2px solid var(--danger);
-            border-left-color: var(--danger);
-        }
-
-        .result-badge {
-            display: inline-block;
-            padding: 0.6rem 1.25rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+        .sample-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .result.safe .result-badge {
-            background-color: var(--success);
-            color: white;
+        .chip {
+            background: rgba(42, 48, 82, 0.6);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .result.warning .result-badge {
-            background-color: var(--warning);
-            color: var(--bg-dark);
+        .chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(0, 212, 255, 0.08);
         }
 
-        .result.danger .result-badge {
-            background-color: var(--danger);
-            color: white;
+        .action-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .result-text {
-            color: var(--text-primary);
-            margin: 0.75rem 0;
+        /* Results Display */
+        .result-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            display: none;
+            animation: fadeIn 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .result-container.show {
+            display: block;
+        }
+
+        .result-container.danger {
+            background-color: rgba(239, 68, 68, 0.08);
+            border-color: var(--danger);
+        }
+
+        .result-container.warning {
+            background-color: rgba(245, 158, 11, 0.08);
+            border-color: var(--warning);
+        }
+
+        .result-container.safe, .result-container.low_risk {
+            background-color: rgba(16, 185, 129, 0.08);
+            border-color: var(--success);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .verdict-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: 9999px;
+            font-weight: 800;
             font-size: 1rem;
-            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .result-details {
-            color: var(--text-secondary);
+        .verdict-badge.danger { background-color: var(--danger); color: white; }
+        .verdict-badge.warning { background-color: var(--warning); color: #0a0e27; }
+        .verdict-badge.safe, .verdict-badge.low_risk { background-color: var(--success); color: white; }
+
+        .risk-meter {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .risk-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .risk-bar-container {
+            width: 140px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .risk-bar {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.6s ease;
+        }
+
+        .risk-bar.danger { background: var(--danger); }
+        .risk-bar.warning { background: var(--warning); }
+        .risk-bar.safe { background: var(--success); }
+
+        .result-summary-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Impersonation Alert Banner */
+        .impersonation-box {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--danger);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .impersonation-box h4 {
+            color: var(--danger);
+            margin-bottom: 0.35rem;
+            font-size: 1rem;
+        }
+
+        .impersonation-box p {
+            color: #fca5a5;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Extracted Links Section */
+        .section-subhead {
             font-size: 0.95rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin: 1.5rem 0 0.75rem;
         }
 
-        .result-url {
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-item-card {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            border-radius: 0.65rem;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
             word-break: break-all;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.75rem;
+        }
+
+        .link-text {
             font-family: 'Courier New', monospace;
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .link-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .link-badge.danger { background: var(--danger); color: white; }
+        .link-badge.warning { background: var(--warning); color: #0a0e27; }
+        .link-badge.safe, .link-badge.low_risk { background: var(--success); color: white; }
+
+        /* Advice box */
+        .advice-box {
+            background: rgba(26, 31, 58, 0.85);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+        }
+
+        .advice-box h4 {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .advice-box ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .advice-box li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.4;
+        }
+
+        /* Sentinel & Extension Pane */
+        .sentinel-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .sentinel-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sentinel-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .sentinel-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .sentinel-steps {
+            background: rgba(0, 0, 0, 0.25);
             border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .sentinel-steps ol {
+            padding-left: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .code-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.4rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-top: 0.4rem;
+            word-break: break-all;
         }
 
         /* Features Section */
         .features {
             max-width: 1400px;
-            margin: 7rem auto;
+            margin: 6rem auto;
             padding: 2rem;
         }
 
         .section-title {
-            font-size: 2.75rem;
+            font-size: 2.5rem;
             text-align: center;
             margin-bottom: 0.5rem;
             font-weight: 800;
@@ -448,221 +716,47 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            border: 2px solid var(--border);
-            border-radius: 1.25rem;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            animation: slideUp 0.8s ease backwards;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2.25rem;
+            transition: all 0.3s ease;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.3s; }
-        .feature-card:nth-child(2) { animation-delay: 0.4s; }
-        .feature-card:nth-child(3) { animation-delay: 0.5s; }
-        .feature-card:nth-child(4) { animation-delay: 0.6s; }
 
         .feature-card:hover {
+            transform: translateY(-5px);
             border-color: var(--primary);
-            transform: translateY(-12px);
-            box-shadow: 0 16px 48px rgba(0, 212, 255, 0.15);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.1);
         }
 
         .feature-icon {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .feature-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 0.975rem;
-            line-height: 1.7;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            max-width: 1400px;
-            margin: 7rem auto;
-            padding: 2rem;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .step {
-            text-align: center;
-            animation: slideUp 0.8s ease backwards;
-            position: relative;
-        }
-
-        .step:nth-child(1) { animation-delay: 0.3s; }
-        .step:nth-child(2) { animation-delay: 0.4s; }
-        .step:nth-child(3) { animation-delay: 0.5s; }
-        .step:nth-child(4) { animation-delay: 0.6s; }
-
-        .step::after {
-            content: '';
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(180deg, var(--primary) 0%, transparent 100%);
-            opacity: 0.3;
-        }
-
-        .step:last-child::after {
-            display: none;
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--bg-dark);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
-            border: 3px solid var(--bg-dark);
-        }
-
-        .step h3 {
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .step p {
-            color: var(--text-secondary);
-            font-size: 0.975rem;
+            font-size: 0.95rem;
             line-height: 1.6;
-        }
-
-        /* Stats Section */
-        .stats {
-            max-width: 1400px;
-            margin: 7rem auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            text-align: center;
-        }
-
-        .stat-card {
-            animation: slideUp 0.8s ease backwards;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(157, 78, 221, 0.05) 100%);
-            border: 2px solid var(--border);
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:nth-child(1) { animation-delay: 0.3s; }
-        .stat-card:nth-child(2) { animation-delay: 0.4s; }
-        .stat-card:nth-child(3) { animation-delay: 0.5s; }
-        .stat-card:nth-child(4) { animation-delay: 0.6s; }
-
-        .stat-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-8px);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.75rem;
-            letter-spacing: -1px;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            max-width: 1400px;
-            margin: 7rem auto;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
-            border: 2px solid var(--border);
-            border-radius: 1.5rem;
-            text-align: center;
-            animation: slideUp 0.8s ease 0.2s backwards;
-        }
-
-        .cta-section h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         /* Footer */
         footer {
-            border-top: 2px solid var(--border);
-            background: linear-gradient(135deg, rgba(19, 24, 41, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            margin-top: 5rem;
+            border-top: 1px solid var(--border);
+            background-color: var(--bg-secondary);
             padding: 4rem 2rem 2rem;
-            color: var(--text-secondary);
+            margin-top: 6rem;
         }
 
         .footer-content {
@@ -672,27 +766,29 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
         .footer-column h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
+            font-size: 1rem;
             font-weight: 700;
+            margin-bottom: 1.25rem;
         }
 
         .footer-column ul {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
         .footer-column a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
         .footer-column a:hover {
@@ -703,116 +799,31 @@
             border-top: 1px solid var(--border);
             padding-top: 2rem;
             text-align: center;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
-        /* Loading spinner */
+        /* Spinner */
         .spinner {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0, 212, 255, 0.2);
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid rgba(10, 14, 39, 0.3);
             border-radius: 50%;
-            border-top-color: var(--primary);
+            border-top-color: #0a0e27;
             animation: spin 0.8s linear infinite;
-            margin-right: 0.75rem;
+            margin-right: 0.5rem;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1.25rem;
-                font-size: 0.85rem;
-            }
-
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .input-group {
-                flex-direction: column;
-            }
-
-            .input-group input,
-            .input-group button {
-                width: 100%;
-            }
-
-            .trust-banner {
-                gap: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .cta-section h2 {
-                font-size: 1.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-
-            .logo {
-                font-size: 1.25rem;
-            }
-
-            .hero {
-                padding: 3rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .scanner-card {
-                padding: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .cta-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .scanner-card { padding: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            nav ul { display: none; }
         }
     </style>
 </head>
@@ -823,9 +834,9 @@
             <ul>
                 <li><a href="#scanner">Scanner</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#stats">Impact</a></li>
-                <li><a href="#footer">Contact</a></li>
+                <li><a href="#sentinel">Messenger Guard</a></li>
+                <li><a href="#extension">Browser Extension</a></li>
+                <li><a href="/api/health" target="_blank" class="nav-pill" id="healthPill">● API Online</a></li>
             </ul>
         </nav>
     </header>
@@ -833,11 +844,20 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <h1>Advanced <span>URL Security</span> at Your Fingertips</h1>
-            <p>Instantly detect phishing links, malware, and suspicious URLs with our AI-powered scanner. Stay protected from cyber threats in real-time.</p>
+            <h1>Stop Phishing in <span>WhatsApp, Emails & Chats</span></h1>
+            <p>
+                NeuralPhish protects you from fraudulent links sent by unknown contacts or scammers.
+                Scan copied messages, incoming emails, and URLs in real-time with hybrid Machine Learning & social engineering heuristics.
+            </p>
+            <div class="hero-badges">
+                <div class="hero-badge-item">💬 WhatsApp Protection</div>
+                <div class="hero-badge-item">📧 Email & SMS Scanner</div>
+                <div class="hero-badge-item">🤖 96.5% AI Accuracy</div>
+                <div class="hero-badge-item">🛡️ Desktop Clipboard Sentinel</div>
+            </div>
             <div class="hero-cta">
-                <button class="btn btn-primary" onclick="document.getElementById('urlInput').focus()">Start Scanning Now</button>
-                <a href="#features" class="btn btn-secondary">Learn More</a>
+                <a href="#scanner" class="btn-primary">Scan Message or Link Now</a>
+                <a href="#sentinel" class="btn-secondary">Enable Desktop Guard</a>
             </div>
         </section>
 
@@ -845,130 +865,242 @@
         <div class="trust-banner">
             <div class="trust-item">
                 <span>✓</span>
-                <div>Trusted by 500K+ Users</div>
+                <div>NLP Vector Machine Learning</div>
             </div>
             <div class="trust-item">
                 <span>✓</span>
-                <div>99.9% Detection Accuracy</div>
+                <div>Brand Impersonation Detection</div>
             </div>
             <div class="trust-item">
                 <span>✓</span>
-                <div>Bank-Grade Security</div>
+                <div>Shannon Entropy Analysis</div>
             </div>
             <div class="trust-item">
                 <span>✓</span>
-                <div>24/7 Support</div>
+                <div>100% Local & Privacy-Preserving</div>
             </div>
         </div>
 
         <!-- Scanner Section -->
         <section class="scanner" id="scanner">
             <div class="scanner-card">
-                <div class="scanner-title">
-                    <span>🔍</span>
-                    <span>URL Security Scanner</span>
-                </div>
-                <div class="input-group">
-                    <input 
-                        type="text" 
-                        id="urlInput" 
-                        placeholder="Paste any URL to scan (e.g., https://example.com)" 
-                        aria-label="URL input"
-                    >
-                    <button onclick="scanURL()" aria-label="Scan URL">
-                        <span id="buttonText">Scan URL</span>
+                <!-- Tabs Header -->
+                <div class="tabs-header">
+                    <button class="tab-btn active" id="tabBtnMsg" onclick="switchTab('msg')">
+                        💬 Messenger & Email Scanner
+                    </button>
+                    <button class="tab-btn" id="tabBtnUrl" onclick="switchTab('url')">
+                        🔗 Single URL Deep Scan
+                    </button>
+                    <button class="tab-btn" id="tabBtnGuard" onclick="switchTab('guard')">
+                        🛡️ Real-time Guard & Extension
                     </button>
                 </div>
-                <div class="result" id="result">
-                    <div class="result-badge" id="resultBadge"></div>
-                    <div class="result-text" id="resultText"></div>
-                    <div class="result-details" id="resultDetails"></div>
-                    <div class="result-url" id="resultUrl"></div>
+
+                <!-- TAB 1: Messenger & Email Scanner -->
+                <div class="tab-pane active" id="paneMsg">
+                    <label class="field-label" for="messageInput">
+                        Paste suspicious message (from WhatsApp, Email, Telegram, or SMS):
+                    </label>
+                    <textarea 
+                        id="messageInput" 
+                        class="message-input" 
+                        placeholder="Paste WhatsApp message, suspicious email text, SMS, or chat transcript here..."
+                    ></textarea>
+
+                    <div class="sample-chips-row">
+                        <span class="sample-label">Try Samples:</span>
+                        <span class="chip" onclick="loadSample('netflix')">📧 Fake Netflix Notice</span>
+                        <span class="chip" onclick="loadSample('amazon')">📱 WhatsApp Prize Scam</span>
+                        <span class="chip" onclick="loadSample('sbi')">🏦 Bank KYC Suspension</span>
+                        <span class="chip" onclick="loadSample('fedex')">📦 FedEx Delivery Trap</span>
+                        <span class="chip" onclick="loadSample('safe')">✅ Safe Meeting Invite</span>
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn-primary" id="btnScanMessage" onclick="scanMessageText()">
+                            <span id="msgBtnText">Analyze Message & Links</span>
+                        </button>
+                        <button class="btn-secondary" onclick="scanFromClipboard()">
+                            📋 Paste from Clipboard & Scan
+                        </button>
+                    </div>
+
+                    <!-- Message Scan Result -->
+                    <div class="result-container" id="msgResult">
+                        <div class="result-header">
+                            <div class="verdict-badge" id="msgBadge">VERDICT</div>
+                            <div class="risk-meter">
+                                <span class="risk-value" id="msgRiskScore">0/100</span>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="msgRiskBar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="result-summary-text" id="msgSummary"></p>
+
+                        <!-- Brand Impersonation Alert Banner -->
+                        <div class="impersonation-box" id="msgImpersonationBox" style="display: none;">
+                            <div style="font-size: 1.5rem;">🚨</div>
+                            <div>
+                                <h4>Brand Impersonation Detected</h4>
+                                <p id="msgImpersonationText"></p>
+                            </div>
+                        </div>
+
+                        <!-- Extracted URLs List -->
+                        <div id="msgLinksSection" style="display: none;">
+                            <div class="section-subhead">Extracted Links in Message (<span id="msgLinkCount">0</span>)</div>
+                            <div class="links-grid" id="msgLinksList"></div>
+                        </div>
+
+                        <!-- Recommendations Advice Box -->
+                        <div class="advice-box" id="msgAdviceBox">
+                            <h4>🛡️ What Should You Do?</h4>
+                            <ul id="msgAdviceList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Single URL Deep Scan -->
+                <div class="tab-pane" id="paneUrl">
+                    <label class="field-label" for="urlInput">Enter specific URL for deep neural & lexical inspection:</label>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                        <input 
+                            type="text" 
+                            id="urlInput" 
+                            class="url-input" 
+                            style="flex: 1;" 
+                            placeholder="e.g., https://secure-verification-login.xyz"
+                        >
+                        <button class="btn-primary" id="btnScanUrl" onclick="scanSingleURL()">
+                            <span id="urlBtnText">Deep Scan URL</span>
+                        </button>
+                    </div>
+
+                    <div class="sample-chips-row">
+                        <span class="sample-label">Test URLs:</span>
+                        <span class="chip" onclick="document.getElementById('urlInput').value='https://google.com'; scanSingleURL();">google.com (Safe)</span>
+                        <span class="chip" onclick="document.getElementById('urlInput').value='http://paypal-verification-account-security-update.xyz/login'; scanSingleURL();">paypal-update.xyz (Phishing)</span>
+                        <span class="chip" onclick="document.getElementById('urlInput').value='http://192.168.1.100/admin'; scanSingleURL();">IP Host (Suspicious)</span>
+                    </div>
+
+                    <!-- Single URL Result -->
+                    <div class="result-container" id="urlResult">
+                        <div class="result-header">
+                            <div class="verdict-badge" id="urlBadge">VERDICT</div>
+                            <div class="risk-meter">
+                                <span class="risk-value" id="urlRiskScore">0/100</span>
+                                <div class="risk-bar-container">
+                                    <div class="risk-bar" id="urlRiskBar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="result-summary-text" id="urlSummary"></p>
+
+                        <div class="section-subhead">Engine Diagnostic Breakdown</div>
+                        <div style="background: rgba(0,0,0,0.25); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+                                <div><strong>ML Classification:</strong> <span id="diagMlClass">-</span></div>
+                                <div><strong>Confidence Score:</strong> <span id="diagMlConf">-</span></div>
+                                <div><strong>Primary Domain:</strong> <span id="diagDomain" style="font-family: monospace;">-</span></div>
+                                <div><strong>Domain Entropy:</strong> <span id="diagEntropy">-</span></div>
+                                <div><strong>SSL Encryption:</strong> <span id="diagSsl">-</span></div>
+                                <div><strong>Suspicious TLD:</strong> <span id="diagTld">-</span></div>
+                            </div>
+                        </div>
+
+                        <div class="advice-box" id="urlThreatsBox">
+                            <h4>⚠️ Threat Signals Flagged</h4>
+                            <ul id="urlThreatsList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Real-time Sentinel & Extension Setup -->
+                <div class="tab-pane" id="paneGuard">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Automated System Protection</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        You don't need to manually visit this dashboard every time. Keep NeuralPhish protecting you in the background while chatting on WhatsApp or reading emails!
+                    </p>
+
+                    <div class="sentinel-features-grid">
+                        <!-- Desktop Clipboard Sentinel -->
+                        <div class="sentinel-card" id="sentinel">
+                            <div>
+                                <h3>📋 Desktop Clipboard Sentinel</h3>
+                                <p>
+                                    Runs quietly on your PC. Whenever someone sends you a message on WhatsApp Desktop, Outlook, or Telegram, simply copy the message (Ctrl+C). NeuralPhish immediately scans it and flashes a native Windows Toast notification if it's dangerous!
+                                </p>
+                                <div class="sentinel-steps">
+                                    <strong>How to run:</strong>
+                                    <ol>
+                                        <li>Open the NeuralPhish folder</li>
+                                        <li>Double-click <strong><code>run_messenger_guard.bat</code></strong></li>
+                                        <li>Copy any text or link. Done!</li>
+                                    </ol>
+                                    <div class="code-box">python messenger_guard.py</div>
+                                </div>
+                            </div>
+                            <button class="btn-primary" onclick="scanFromClipboard()">
+                                🔍 Scan Current Clipboard Now
+                            </button>
+                        </div>
+
+                        <!-- Chrome / Edge Extension -->
+                        <div class="sentinel-card" id="extension">
+                            <div>
+                                <h3>🌐 Chrome & Edge Extension</h3>
+                                <p>
+                                    Direct protection inside <strong>WhatsApp Web</strong>, <strong>Gmail</strong>, and browsers. Right-click any link or chat message to scan without leaving your tab.
+                                </p>
+                                <div class="sentinel-steps">
+                                    <strong>Installation in 3 steps:</strong>
+                                    <ol>
+                                        <li>Go to <code>chrome://extensions</code> or <code>edge://extensions</code></li>
+                                        <li>Turn <strong>ON</strong> "Developer mode"</li>
+                                        <li>Click <strong>"Load unpacked"</strong> and select:</li>
+                                    </ol>
+                                    <div class="code-box">C:\Personal files\NeuralPhish\NeuralPhish\extension</div>
+                                </div>
+                            </div>
+                            <a href="#scanner" class="btn-secondary" onclick="switchTab('msg')">
+                                💬 Return to Scanner
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Features Section -->
         <section class="features" id="features">
-            <h2 class="section-title">Why Choose NeuralPhish?</h2>
-            <p class="section-subtitle">Industry-leading security features that protect you from digital threats</p>
+            <h2 class="section-title">Built for Real-World Messenger Threats</h2>
+            <p class="section-subtitle">Why traditional antivirus fails to stop WhatsApp and email phishing</p>
             <div class="features-grid">
                 <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3>Brand Impersonation Engine</h3>
+                    <p>Detects when scammers claim to be Netflix, Amazon, PayPal, or FedEx while routing you to fraudulent imitation domains.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>NLP Token Vectorizer</h3>
+                    <p>Trained on 549,000+ malicious and benign URLs using CountVectorizer and Naive Bayes to classify obfuscated patterns with 96.5% accuracy.</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Instant Detection</h3>
-                    <p>Get results in milliseconds using advanced machine learning that analyzes millions of threat patterns in real-time.</p>
+                    <h3>Defanged Link Recovery</h3>
+                    <p>Automatically cleans and decodes defanged links (hxxps, [.], [slash]) often used to disguise malicious destinations in chats.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered Analysis</h3>
-                    <p>Our intelligent engine detects even the most sophisticated phishing attempts and zero-day threats with precision.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Bank-Grade Security</h3>
-                    <p>Military-grade encryption and industry-leading security protocols protect your data throughout every scan.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Detailed Reports</h3>
-                    <p>Comprehensive threat analysis with actionable insights and remediation recommendations for your peace of mind.</p>
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Local & Private</h3>
+                    <p>Runs 100% on your own system. Your personal chats, emails, and contacts are never uploaded to any external cloud servers.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- How It Works Section -->
-        <section class="how-it-works" id="how-it-works">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Simple, secure, and effective in 4 easy steps</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Paste URL</h3>
-                    <p>Enter any suspicious URL into our secure scanner interface with one click.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>AI Analysis</h3>
-                    <p>Our advanced algorithms scan against billions of known threats instantly.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Get Results</h3>
-                    <p>Receive instant classification: Safe, Suspicious, or Dangerous with detailed analysis.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Take Action</h3>
-                    <p>Get personalized recommendations and protection measures tailored to your security needs.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats" id="stats">
-            <div class="stat-card">
-                <div class="stat-number" data-count="10000000">0</div>
-                <div class="stat-label">URLs Scanned Daily</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-count="99.9">0</div>
-                <div class="stat-label">Detection Accuracy (%)</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-count="500000">0</div>
-                <div class="stat-label">Active Users</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-count="24">0</div>
-                <div class="stat-label">Hour Support</div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <h2>Ready to Protect Yourself?</h2>
-            <p>Join thousands of users who trust NeuralPhish for their online security. Start scanning URLs for free today.</p>
-            <button class="btn btn-primary" onclick="document.getElementById('urlInput').focus()">Get Started Now</button>
         </section>
     </main>
 
@@ -977,210 +1109,322 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>About NeuralPhish</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Leading provider of URL security and phishing detection solutions protecting organizations worldwide.</p>
+                    <h3>🛡️ NeuralPhish Security</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Local machine learning defense protecting users from malicious URLs, phishing traps, and social engineering in WhatsApp, Email, and messengers.
+                    </p>
                 </div>
                 <div class="footer-column">
-                    <h3>Product</h3>
+                    <h3>Scanning Modes</h3>
                     <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#scanner">Scanner</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#security">Security</a></li>
+                        <li><a href="#scanner" onclick="switchTab('msg')">WhatsApp & Email Scanner</a></li>
+                        <li><a href="#scanner" onclick="switchTab('url')">Single URL Deep Scan</a></li>
+                        <li><a href="#sentinel">Clipboard Sentinel</a></li>
+                        <li><a href="#extension">Browser Extension</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Company</h3>
+                    <h3>Quick Actions</h3>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#press">Press</a></li>
+                        <li><a href="/api/health" target="_blank">Health Check API</a></li>
+                        <li><a href="/api/model-info" target="_blank">Model Specifications</a></li>
+                        <li><a href="#features">Detection Architecture</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#cookies">Cookie Policy</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
+                    <h3>Privacy & Safety</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6;">
+                        All scans are processed on your local machine. No external tracking, no telemetry.
+                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NeuralPhish Security. All rights reserved. | Protecting the internet, one link at a time.</p>
+                <p>&copy; 2026 NeuralPhish. Offline Machine Learning Protection for Personal Messengers.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script>
-        // Scanner functionality
-        function scanURL() {
-            const urlInput = document.getElementById('urlInput');
-            const url = urlInput.value.trim();
-            const resultDiv = document.getElementById('result');
-            const buttonText = document.getElementById('buttonText');
-            const button = event.target;
+        const SAMPLES = {
+            netflix: "URGENT: Your Netflix membership payment failed! Your streaming service will be suspended within 24 hours. Update your billing method immediately at https://netflix-billing-update.xyz/login to keep watching.",
+            amazon: "Congratulations! You have been selected as the lucky winner of the Amazon Anniversary Draw ($1,000 Gift Card). Claim your prize now: http://amazon-anniversary-prize.top/claim before time runs out!",
+            sbi: "Dear Customer, your Bank account KYC verification has expired. Your card and account will be blocked today. Please complete your online KYC update at http://kyc-update-sbi-portal.xyz/verify immediately.",
+            fedex: "FedEx Delivery Notice: We were unable to deliver parcel #49281 to your address. A redelivery fee of $1.50 is required. Reschedule delivery here: http://fedex-parcel-redelivery.online/track",
+            safe: "Hi team, please find the Python official documentation for the upcoming tutorial: https://www.python.org/doc/ and the repository on https://github.com. See you tomorrow!"
+        };
 
-            if (!url) {
-                alert('Please enter a URL to scan');
+        function switchTab(tab) {
+            document.getElementById('tabBtnMsg').classList.remove('active');
+            document.getElementById('tabBtnUrl').classList.remove('active');
+            document.getElementById('tabBtnGuard').classList.remove('active');
+
+            document.getElementById('paneMsg').classList.remove('active');
+            document.getElementById('paneUrl').classList.remove('active');
+            document.getElementById('paneGuard').classList.remove('active');
+
+            if (tab === 'msg') {
+                document.getElementById('tabBtnMsg').classList.add('active');
+                document.getElementById('paneMsg').classList.add('active');
+            } else if (tab === 'url') {
+                document.getElementById('tabBtnUrl').classList.add('active');
+                document.getElementById('paneUrl').classList.add('active');
+            } else if (tab === 'guard') {
+                document.getElementById('tabBtnGuard').classList.add('active');
+                document.getElementById('paneGuard').classList.add('active');
+            }
+        }
+
+        function loadSample(key) {
+            if (SAMPLES[key]) {
+                document.getElementById('messageInput').value = SAMPLES[key];
+                scanMessageText();
+            }
+        }
+
+        async function scanMessageText() {
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            const btn = document.getElementById('btnScanMessage');
+            const btnText = document.getElementById('msgBtnText');
+            const resultBox = document.getElementById('msgResult');
+
+            if (!text) {
+                alert('Please enter or paste a message to analyze.');
+                input.focus();
                 return;
             }
 
-            // Show loading state
-            button.disabled = true;
-            buttonText.innerHTML = '<span class="spinner"></span>Scanning...';
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="spinner"></span>Analyzing Message & Links...';
 
-            // Simulate API call with delay
-            setTimeout(() => {
-                const analysis = analyzeURL(url);
-                displayResult(analysis);
-                button.disabled = false;
-                buttonText.textContent = 'Scan URL';
-            }, 1500);
+            try {
+                const res = await fetch('/api/scan-message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const json = await res.json();
+                if (!json.success || !json.data) {
+                    throw new Error(json.error || 'Failed to scan message');
+                }
+
+                displayMessageResult(json.data);
+            } catch (err) {
+                alert('Error analyzing message: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = 'Analyze Message & Links';
+            }
         }
 
-        function analyzeURL(url) {
-            const lowerURL = url.toLowerCase();
-            const phishingKeywords = [
-                'verify', 'confirm', 'update', 'login', 'account', 'secure', 
-                'paypal', 'amazon', 'apple', 'microsoft', 'urgent',
-                'click', 'act', 'immediately', 'expire', 'suspended'
-            ];
+        function displayMessageResult(data) {
+            const box = document.getElementById('msgResult');
+            const badge = document.getElementById('msgBadge');
+            const scoreText = document.getElementById('msgRiskScore');
+            const bar = document.getElementById('msgRiskBar');
+            const summary = document.getElementById('msgSummary');
 
-            const dangerousPatterns = [
-                /bit\.ly|tinyurl|short\.link/i,
-                /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/,
-                /xn--/
-            ];
+            box.className = `result-container show ${data.status}`;
+            badge.className = `verdict-badge ${data.status}`;
+            badge.textContent = `${data.verdict}`;
 
-            let riskScore = 0;
-            let issues = [];
+            scoreText.textContent = `${data.risk_score}/100`;
+            bar.className = `risk-bar ${data.status}`;
+            bar.style.width = `${Math.max(5, data.risk_score)}%`;
 
-            // Check for phishing keywords
-            for (let keyword of phishingKeywords) {
-                if (lowerURL.includes(keyword)) {
-                    riskScore += 5;
-                }
-            }
+            summary.textContent = data.summary;
 
-            // Check for dangerous patterns
-            for (let pattern of dangerousPatterns) {
-                if (pattern.test(url)) {
-                    riskScore += 15;
-                    issues.push('Suspicious URL pattern detected');
-                }
-            }
-
-            // Check for HTTPS
-            if (!url.startsWith('https://')) {
-                riskScore += 10;
-                issues.push('No secure HTTPS connection');
-            }
-
-            // Check domain reputation
-            if (url.includes('bit.ly') || url.includes('tinyurl')) {
-                riskScore += 20;
-                issues.push('Shortened URL - destination unclear');
-            }
-
-            // Determine verdict
-            let status, verdict, message, details;
-            if (riskScore >= 40) {
-                status = 'danger';
-                verdict = 'DANGEROUS';
-                message = 'This URL appears to be malicious. Do not visit this link.';
-                details = 'Our analysis detected multiple threat indicators. This URL is likely hosting malware or phishing content.';
-            } else if (riskScore >= 15) {
-                status = 'warning';
-                verdict = 'SUSPICIOUS';
-                message = 'This URL shows warning signs. Proceed with caution.';
-                details = 'Potential threats detected. Verify the source before clicking.';
+            // Brand Impersonation Alert
+            const impBox = document.getElementById('msgImpersonationBox');
+            const impText = document.getElementById('msgImpersonationText');
+            if (data.social_engineering && data.social_engineering.has_brand_impersonation) {
+                const flags = data.social_engineering.impersonation_flags;
+                impBox.style.display = 'flex';
+                impText.textContent = flags.map(f => f.warning).join(' ');
             } else {
-                status = 'safe';
-                verdict = 'SAFE';
-                message = 'This URL appears to be legitimate and safe.';
-                details = 'Our analysis found no known threats associated with this URL.';
+                impBox.style.display = 'none';
             }
 
-            return {
-                url,
-                status,
-                verdict,
-                message,
-                details,
-                riskScore,
-                issues
-            };
-        }
+            // Extracted Links List
+            const linksSection = document.getElementById('msgLinksSection');
+            const linksList = document.getElementById('msgLinksList');
+            const linkCount = document.getElementById('msgLinkCount');
 
-        function displayResult(analysis) {
-            const resultDiv = document.getElementById('result');
-            const badge = document.getElementById('resultBadge');
-            const text = document.getElementById('resultText');
-            const details = document.getElementById('resultDetails');
-            const urlDisplay = document.getElementById('resultUrl');
+            if (data.url_results && data.url_results.length > 0) {
+                linksSection.style.display = 'block';
+                linkCount.textContent = data.url_results.length;
+                linksList.innerHTML = '';
 
-            resultDiv.className = `result show ${analysis.status}`;
-            badge.textContent = analysis.verdict;
-            text.textContent = analysis.message;
-
-            let detailsHTML = `<strong>Risk Score:</strong> ${analysis.riskScore}/100<br>`;
-            if (analysis.issues.length > 0) {
-                detailsHTML += `<strong>Issues Found:</strong><br>`;
-                analysis.issues.forEach(issue => {
-                    detailsHTML += `• ${issue}<br>`;
+                data.url_results.forEach(u => {
+                    const card = document.createElement('div');
+                    card.className = 'link-item-card';
+                    card.innerHTML = `
+                        <div class="link-text">🔗 ${escapeHtml(u.url)}</div>
+                        <div class="link-badge ${u.status}">${u.verdict} (${u.risk_score}%)</div>
+                    `;
+                    linksList.appendChild(card);
                 });
             } else {
-                detailsHTML += `<strong>Status:</strong> No threats detected<br>`;
+                linksSection.style.display = 'none';
             }
-            details.innerHTML = detailsHTML;
-            urlDisplay.textContent = `URL: ${analysis.url}`;
+
+            // Recommendations List
+            const adviceList = document.getElementById('msgAdviceList');
+            adviceList.innerHTML = '';
+            (data.recommendations || []).forEach(r => {
+                const li = document.createElement('li');
+                li.textContent = r;
+                adviceList.appendChild(li);
+            });
+
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Animate counters
-        function animateCounters() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            
-            const observerOptions = {
-                threshold: 0.5
-            };
+        async function scanSingleURL() {
+            const input = document.getElementById('urlInput');
+            const url = input.value.trim();
+            const btn = document.getElementById('btnScanUrl');
+            const btnText = document.getElementById('urlBtnText');
+            const resultBox = document.getElementById('urlResult');
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const target = parseFloat(element.dataset.count);
-                        const duration = 2000;
-                        const start = Date.now();
-                        const initial = 0;
+            if (!url) {
+                alert('Please enter a URL to scan.');
+                input.focus();
+                return;
+            }
 
-                        function update() {
-                            const progress = (Date.now() - start) / duration;
-                            if (progress < 1) {
-                                const value = initial + (target - initial) * progress;
-                                element.textContent = Math.floor(value).toLocaleString();
-                                requestAnimationFrame(update);
-                            } else {
-                                element.textContent = target.toLocaleString();
-                            }
-                        }
-                        update();
-                        observer.unobserve(element);
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="spinner"></span>Evaluating Neural Weights...';
+
+            try {
+                const res = await fetch('/api/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: url })
+                });
+
+                const json = await res.json();
+                if (!json.success || !json.data) {
+                    throw new Error(json.error || 'Failed to scan URL');
+                }
+
+                displayUrlResult(json.data);
+            } catch (err) {
+                alert('Error analyzing URL: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = 'Deep Scan URL';
+            }
+        }
+
+        function displayUrlResult(data) {
+            const box = document.getElementById('urlResult');
+            const badge = document.getElementById('urlBadge');
+            const scoreText = document.getElementById('urlRiskScore');
+            const bar = document.getElementById('urlRiskBar');
+            const summary = document.getElementById('urlSummary');
+
+            box.className = `result-container show ${data.status}`;
+            badge.className = `verdict-badge ${data.status}`;
+            badge.textContent = `${data.verdict}`;
+
+            scoreText.textContent = `${data.risk_score}/100`;
+            bar.className = `risk-bar ${data.status}`;
+            bar.style.width = `${Math.max(5, data.risk_score)}%`;
+
+            summary.textContent = data.summary;
+
+            // Diagnostics
+            document.getElementById('diagMlClass').textContent = data.ml_analysis.classification;
+            document.getElementById('diagMlConf').textContent = `${data.ml_analysis.confidence_score}%`;
+            document.getElementById('diagDomain').textContent = data.lexical_breakdown.primary_domain || '-';
+            document.getElementById('diagEntropy').textContent = `${data.lexical_breakdown.domain_entropy}`;
+            document.getElementById('diagSsl').textContent = data.lexical_breakdown.is_https ? 'HTTPS (Encrypted)' : 'HTTP (Plaintext)';
+            document.getElementById('diagTld').textContent = `.${data.lexical_breakdown.tld}`;
+
+            // Threats list
+            const threatsList = document.getElementById('urlThreatsList');
+            threatsList.innerHTML = '';
+            if (data.threat_indicators && data.threat_indicators.length > 0) {
+                data.threat_indicators.forEach(t => {
+                    const li = document.createElement('li');
+                    li.textContent = `• ${t}`;
+                    threatsList.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = '• No anomalous threat signals detected in lexical structure.';
+                threatsList.appendChild(li);
+            }
+
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        async function scanFromClipboard() {
+            try {
+                // Try browser clipboard API first
+                let text = "";
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    try {
+                        text = await navigator.clipboard.readText();
+                    } catch (e) {
+                        // fallback to backend
                     }
-                });
-            }, observerOptions);
+                }
 
-            statNumbers.forEach(number => observer.observe(number));
+                if (text && text.trim()) {
+                    document.getElementById('messageInput').value = text;
+                    switchTab('msg');
+                    scanMessageText();
+                    return;
+                }
+
+                // Call backend clipboard endpoint
+                const res = await fetch('/api/scan-clipboard', { method: 'POST' });
+                const json = await res.json();
+                if (json.clipboard_empty) {
+                    alert('Clipboard is currently empty.');
+                    return;
+                }
+                if (json.success && json.data) {
+                    switchTab('msg');
+                    document.getElementById('messageInput').value = json.clipboard_text_snippet || "";
+                    displayMessageResult(json.data);
+                } else {
+                    alert('Could not read clipboard. Please paste manually into the text box.');
+                }
+            } catch (err) {
+                alert('Clipboard access error: ' + err.message);
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', animateCounters);
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
 
+        // Check health status on load
+        fetch('/api/health')
+            .then(res => res.json())
+            .then(data => {
+                const pill = document.getElementById('healthPill');
+                if (data.status === 'healthy') {
+                    pill.textContent = '● Engine Online (v2.1)';
+                    pill.style.borderColor = 'var(--success)';
+                    pill.style.color = 'var(--success)';
+                }
+            })
+            .catch(() => {
+                const pill = document.getElementById('healthPill');
+                pill.textContent = '● Offline';
+                pill.style.borderColor = 'var(--danger)';
+                pill.style.color = 'var(--danger)';
+            });
+
+        // Enter key listeners
         document.getElementById('urlInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                scanURL();
-            }
+            if (e.key === 'Enter') scanSingleURL();
         });
     </script>
 </body>

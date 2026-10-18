@@ -1,0 +1,11 @@
+.git/
+.gitignore
+.venv/
+__pycache__/
+*.pyc
+*.log
+tests/
+notebooks/
+.pytest_cache/
+*.bat
+README.md
