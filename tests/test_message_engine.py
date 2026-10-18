@@ -6,7 +6,12 @@ import pytest
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "NeuralPhish")))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+SUB_DIR = os.path.join(ROOT_DIR, "NeuralPhish")
+for p in [ROOT_DIR, SUB_DIR]:
+    if os.path.exists(p) and p not in sys.path:
+        sys.path.insert(0, p)
 
 from scanner_engine import NeuralPhishEngine
 from message_engine import MessageScanner
